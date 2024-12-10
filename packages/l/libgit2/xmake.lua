@@ -57,7 +57,7 @@ package("libgit2")
         local https = package:config("https")
         if package:is_plat("iphoneos") and https == "openssl" then
             -- TODO: openssl support iphoneos
-            return 
+            return
         end
 
         if https ~= "winhttp" then
@@ -90,6 +90,7 @@ package("libgit2")
             io.replace("cmake/DefaultCFlags.cmake", "/MTd", "", {plain = true})
             io.replace("cmake/DefaultCFlags.cmake", "/MD", "", {plain = true})
             io.replace("cmake/DefaultCFlags.cmake", "/MDd", "", {plain = true})
+            io.replace("cmake/DefaultCFlags.cmake", "/LTCG", "", {plain = true})
 
             io.replace("CMakeLists.txt", "/GL", "", {plain = true})
             if package:version():eq("1.7.1") then
@@ -109,7 +110,7 @@ package("libgit2")
                 if package:is_plat("windows", "mingw", "msys") then
                     table.join2(links, {"ws2_32", "advapi32", "bcrypt"})
                 end
-    
+
                 io.replace("cmake/FindmbedTLS.cmake",
                     [["-L${MBEDTLS_LIBRARY_DIR} -l${MBEDTLS_LIBRARY_FILE} -l${MBEDX509_LIBRARY_FILE} -l${MBEDCRYPTO_LIBRARY_FILE}"]],
                     table.concat(links, " "), {plain = true})
