@@ -41,5 +41,6 @@ package("libgit2")
             table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:is_debug() and "Debug" or "Release"))
             import("package.tools.cmake").install(package, configs)
         end
+    end)
 
         
