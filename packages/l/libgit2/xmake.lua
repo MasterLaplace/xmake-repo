@@ -90,7 +90,8 @@ package("libgit2")
             io.replace("cmake/DefaultCFlags.cmake", "/MTd", "", {plain = true})
             io.replace("cmake/DefaultCFlags.cmake", "/MD", "", {plain = true})
             io.replace("cmake/DefaultCFlags.cmake", "/MDd", "", {plain = true})
-            io.replace("cmake/DefaultCFlags.cmake", "/LTCG", "", {plain = true})
+
+            io.replace("CMakeLists.txt", "/LTCG", "", {plain = true})
 
             io.replace("CMakeLists.txt", "/GL", "", {plain = true})
             if package:version():eq("1.7.1") then
